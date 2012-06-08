@@ -28,29 +28,29 @@
 URL = "#{process.env.HUBOT_PLAY_URL}/api"
 
 module.exports = (robot) ->
-  robot.respond /where'?s play/i, (message) ->
+  robot.respond /where'?s play$/i, (message) ->
     message.send("play's at #{process.env.HUBOT_PLAY_URL}")
 
-  robot.respond /what'?s playing/i, (message) ->
+  robot.respond /what'?s playing$/i, (message) ->
     message.http("#{URL}/now_playing").get() (err, res, body) ->
       json = JSON.parse(body)
       str = "\"" + json.song_title + "\" by " +
             json.artist_name + ", from \"" + json.album_name + "\"."
       message.send("Now playing " + str)
 
-  robot.respond /say (.*)/i, (message) ->
+  robot.respond /say (.*)$/i, (message) ->
     message.http("#{URL}/say")
       .query(message: message.match[1])
       .get() (err, res, body) ->
         message.send(message.match[1])
 
-  robot.respond /play stats/i, (message) ->
+  robot.respond /play stats$/i, (message) ->
     message.http("#{URL}/stats")
       .get() (err, res, body) ->
         json = JSON.parse(body)
         message.send(json.message)
 
-  robot.respond /who'?s online/i, (message) ->
+  robot.respond /who'?s online$/i, (message) ->
     message.http("#{URL}/online")
       .get() (err, res, body) ->
         json = JSON.parse(body)
@@ -66,7 +66,7 @@ module.exports = (robot) ->
 
         message.send(str.join(" "))
 
-  robot.respond /volume (.*)/i, (message) ->
+  robot.respond /volume (.*)$/i, (message) ->
     message.http("#{URL}/volume")
       .query(level: message.match[1])
       .header('Content-Length', 0)
@@ -84,7 +84,7 @@ module.exports = (robot) ->
         json = JSON.parse(body)
         message.send("#{json.volume}")
 
-  robot.respond /quiet/i, (message) ->
+  robot.respond /quiet$/i, (message) ->
     message.http("#{URL}/volume")
       .query(level: 1)
       .header('Content-Length', 0)
@@ -95,7 +95,7 @@ module.exports = (robot) ->
         else
           message.send("Whoa, can't change the volume. Weird.")
 
-  robot.respond /(un)?pause( play)?/i, (message) ->
+  robot.respond /(un)?pause( play)?$/i, (message) ->
     message.http("#{URL}/pause")
       .header('Content-Length', 0)
       .post() (err, res, body) ->
@@ -105,7 +105,7 @@ module.exports = (robot) ->
         else
           message.send("Nope, can't. You're on your own.")
 
-  robot.respond /play next/i, (message) ->
+  robot.respond /play next$/i, (message) ->
     message.http("#{URL}/next")
       .header('Content-Length', 0)
       .post() (err, res, body) ->
@@ -115,7 +115,7 @@ module.exports = (robot) ->
         else
           message.send("hwhoops")
 
-  robot.respond /play ["']?(.+)["']?/i, (message) ->
+  robot.respond /play ["']?(.+)["']?$/i, (message) ->
     return if message.match[1].match(' by ')
     return if message.match[1] == 'next'
     return if message.match[1] == 'stats'
@@ -132,7 +132,7 @@ module.exports = (robot) ->
         else
           message.send("Queued up 10 " + json.artist_name + " tracks.")
 
-  robot.respond /play album ["']?(.+)["']?/i, (message) ->
+  robot.respond /play album ["']?(.+)["']?$/i, (message) ->
     message.http("#{URL}/add_album")
       .query(user_login: message.message.user.githubLogin, name: message.match[1])
       .header('Content-Length', 0)
@@ -144,7 +144,7 @@ module.exports = (robot) ->
           str = json.album_name + " by " + json.artist_name + "."
           message.reply("Queued up " + str)
 
-  robot.respond /play ["']?(.+)["']? by ["']?(.+)["']?/i, (message) ->
+  robot.respond /play ["']?(.+)["']? by ["']?(.+)["']?$/i, (message) ->
     message.http("#{URL}/add_song")
       .query(user_login: message.message.user.githubLogin, artist_name: message.match[2], song_title: message.match[1])
       .header('Content-Length', 0)
@@ -157,7 +157,7 @@ module.exports = (robot) ->
         else
           message.send("Never heard of it.")
 
-  robot.respond /(I like|star|I love) this song/i, (message) ->
+  robot.respond /(I like|star|I love) this song$/i, (message) ->
     message.http("#{URL}/star_now_playing")
       .query(user_login: message.message.user.githubLogin)
       .header('Content-Length', 0)
@@ -165,7 +165,7 @@ module.exports = (robot) ->
         json = JSON.parse(body)
         message.send("You have a weird taste in music, but I'll remember it.")
 
-  robot.respond /play something i('d)? like/i, (message) ->
+  robot.respond /play something i('d)? like$/i, (message) ->
     message.http("#{URL}/play_stars")
       .query(user_login: message.message.user.githubLogin)
       .header('Content-Length', 0)
@@ -173,17 +173,17 @@ module.exports = (robot) ->
         json = JSON.parse(body)
         message.send("Queued up " + json.song_title + " by " + json.artist_name)
 
-  robot.respond /I want this song/i, (message) ->
+  robot.respond /I want this song$/i, (message) ->
     message.http("#{URL}/now_playing").get() (err, res, body) ->
       json = JSON.parse(body)
       message.send("Cool! Me too. You can snag it at: #{process.env.HUBOT_PLAY_URL}#{json.song_download_path}")
 
-  robot.respond /I want this album/i, (message) ->
+  robot.respond /I want this album$/i, (message) ->
     message.http("#{URL}/now_playing").get() (err, res, body) ->
       json = JSON.parse(body)
       message.send("Cool! Me too. You can snag it at: #{process.env.HUBOT_PLAY_URL}#{json.album_download_path}")
 
-  robot.respond /list songs by ["']?(.+)["']?/i, (message) ->
+  robot.respond /list songs by ["']?(.+)["']?$/i, (message) ->
     artist = message.match[1]
     message.http("#{URL}/search")
       .query(facet: 'artist', q: artist)
