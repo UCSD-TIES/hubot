@@ -3,8 +3,7 @@ API_URL = 'https://api.mailgun.net/v2'
 
 module.exports = (robot) ->
   robot.respond /(send all)? (.*)/i, (msg) ->
-    msg
-      .http("#{API_URL}/lists")
+    msg.http("#{API_URL}/lists")
       .auth("api:#{API_KEY}")
       .query(
         from: msg.message.user,
@@ -16,6 +15,7 @@ module.exports = (robot) ->
       )
       .header('Content-Length', 0)
       .post() (err, res, body) ->
+        console.log body
         json = JSON.parse(body)
         if json.success == true
           msg.send("Message sent.")
