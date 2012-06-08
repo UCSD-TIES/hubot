@@ -5,7 +5,7 @@ module.exports = (robot) ->
   robot.respond /(send all)? (.*)/i, (msg) ->
     msg.http("#{API_URL}/lists")
       .auth("api:#{API_KEY}")
-      .query(
+      .quer(
         from: msg.message.user,
         # to: 'team@app3955312.mailgun.org'
         to: 'lewis.f.chung@gmail.com',
@@ -15,6 +15,7 @@ module.exports = (robot) ->
       )
       .header('Content-Length', 0)
       .post() (err, res, body) ->
+        console.log err
         console.log body
         json = JSON.parse(body)
         if json.success == true
