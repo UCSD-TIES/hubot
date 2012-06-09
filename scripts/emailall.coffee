@@ -2,6 +2,7 @@
 
 module.exports = (robot) ->
   robot.respond /send all (.*)$/i, (message) ->
+    message.send "Okay."
     message.http("https://api:key-8w2x33l2xsi8soop6l2wl3fdyw6fnfr0@api.mailgun.net/v2/lewis.mailgun.org/messages")
       .query(
         from: 'postmaster@lewis.mailgun.org'
