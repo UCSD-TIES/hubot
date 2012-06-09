@@ -7,7 +7,7 @@ module.exports = (robot) ->
         to: 'lewis.f.chung@gmail.com'
         subject: 'Testing Mailgun API'
         text: 'testing this')
-      .headers('Content-Type': 'application/x-www-form-urlencoded')
+      .headers('Content-Type': 'application/x-www-form-urlencoded', 'Content-Length': 0)
       .post({}) (err, res, body) ->
         if err
           message.send "#{err}"
