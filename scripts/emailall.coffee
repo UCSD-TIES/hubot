@@ -1,16 +1,27 @@
-API_KEY = 'key-8w2x33l2xsi8soop6l2wl3fdyw6fnfr0'
-API_URL = 'https://api.mailgun.net/v2'
+request = require 'request'
+querystring = require 'querystring'
+url = require 'url'
 
-mailgun = new Mailgun(API_KEY)
-
+mailgun_uri = url.parse('https://api.mailgun.net/v2/app3955312.mailgun.org/messages')
+mailgun_uri.auth = 'api:key-8w2x33l2xsi8soop6l2wl3fdyw6fnfr0'
 
 module.exports = (robot) ->
   robot.respond /send all (.*)$/i, (message) ->
-    mailgun.sendText('lewis.f.chung@gmail.com',
-         ['lewis.f.chung@gmail.com'],
-         'Behold the wonderous power of email!',
-         {},
-         do (err) ->
-          err && console.log(err)
-          message.send("Gotcha!")
+    body = querystring.stringify(
+      from: 'lewis.f.chung@gmail.com'
+      to: 'lewis.f.chung@gmail.com'
+      subject: 'hello'
+      text: 'testing this'
+      'o.testmode': 'true'
+    )
+
+    request(
+      url: mailgun_uri
+      method: 'POST'
+      headers:
+        'content-type': 'application/x-www-form-urlencoded'
+      body: body
+      (err, res, body) ->
+        console.log res.statusCode
+        console.log body
     )
