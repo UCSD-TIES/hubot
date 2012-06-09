@@ -19,8 +19,7 @@
     "hubot": "2.1.4",
     "hubot-scripts": ">=2.0.4",
     "optparse": "1.0.3",
-    "hashlib": "1.0.1",
-    "nodemailer": "0.3.20"
+    "mailer": "0.1.20"
   }
 }
 
