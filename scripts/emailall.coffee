@@ -13,3 +13,4 @@ module.exports = (robot) ->
          do (err) ->
           err && console.log(err)
           message.send("Gotcha!")
+    )
