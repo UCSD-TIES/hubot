@@ -18,7 +18,4 @@ module.exports = (robot) ->
         console.log err
         console.log res
         console.log body
-        if json.success == true
-          message.send("Message sent.")
-        else
-          message.send("Error sending message. (dealwithit)")
+        message.send("Message sent.")
