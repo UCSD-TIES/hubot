@@ -27,5 +27,5 @@ module.exports = (robot) ->
       else
         console.log "Message sent: " + response.message
         message.send "Message sent: " + response.message
-      smtpTransport.close()
+        return
 
