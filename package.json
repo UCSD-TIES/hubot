@@ -23,7 +23,8 @@
     "hubot": "2.2.1",
     "hubot-scripts": ">=2.0.1",
     "optparse": "1.0.3",
-    "mailer": ">=0.0.1"
+    "mailer": ">=0.0.1",
+    "nodemailer": "0.3.20"
   }
 }
 
