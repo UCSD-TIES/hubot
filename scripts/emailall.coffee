@@ -42,7 +42,7 @@ module.exports = (robot) ->
     if (options.host)
       options.to = 'lewis.f.chung@gmail.com'
       options.from = 'lewis@lewis.mailgun.org'
-      options.subject = "#{message.message.user} sent a message to inhaiti team"
+      options.subject = "#{message.message.user.name} sent a message to inhaiti team"
       options.body = "#{message.match[1]}"
 
       mail.send options, (err, result) ->
