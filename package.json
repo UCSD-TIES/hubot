@@ -16,7 +16,7 @@
 
   "dependencies": {
     "hubot-hipchat": ">=1.0.5",
-    "hubot": "2.0.1",
+    "hubot": "2.2.1",
     "hubot-scripts": ">=2.0.1",
     "optparse": "1.0.3",
     "mailer": ">=0.0.1"
