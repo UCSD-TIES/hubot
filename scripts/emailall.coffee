@@ -42,8 +42,8 @@ module.exports = (robot) ->
     if (options.host)
       options.to = 'lewis.f.chung@gmail.com'
       options.from = 'lewis@lewis.mailgun.org'
-      options.subject = "#{message.message.user.name} sent a message to inhaiti team"
-      options.body = "#{message.match[1]}"
+      options.subject = "#{message.message.user.name} sent everyone a message"
+      options.body = "<p>Hello, #{message.message.user.name} just sent everyone this notice message.</p><p><b>#{message.message.user.name}:</b> #{message.match[1]}</p>"
 
       mail.send options, (err, result) ->
         console.log err
