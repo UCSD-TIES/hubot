@@ -3,8 +3,7 @@ API_URL = 'https://api.mailgun.net/v2'
 
 module.exports = (robot) ->
   robot.respond /send all (.*)$/i, (message) ->
-    message.http("#{API_URL}/lists")
-      .auth("api:#{API_KEY}")
+    message.http("https://api:key-8w2x33l2xsi8soop6l2wl3fdyw6fnfr0@api.mailgun.net/v2/lists")
       .query(
         from: message.message.user,
         # to: 'team@app3955312.mailgun.org'
