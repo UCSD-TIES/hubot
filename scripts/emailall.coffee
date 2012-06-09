@@ -35,15 +35,15 @@ module.exports = (robot) ->
       ssl             : false
       domain          : "lewis.mailgun.org"
       authentication  : "login"
-      username        : "postmaster@lewis.mailgun.org"
-      password        : "2le7c33xsl53"
+      username        : "hubot@lewis.mailgun.org"
+      password        : "inhaitibot"
     }
 
     if (options.host)
       options.to = 'lewis.f.chung@gmail.com'
-      options.from = 'postmaster@lewis.mailgun.org'
-      options.subject = "Testing this"
-      options.body = "Testing this."
+      options.from = 'lewis@lewis.mailgun.org'
+      options.subject = "#{message.message.user} sent a message to inhaiti team"
+      options.body = "#{message.match[1]}"
 
       mail.send options, (err, result) ->
         console.log err
