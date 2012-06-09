@@ -11,9 +11,11 @@ module.exports = (robot) ->
         text: 'testing this')
       .headers('Content-Type': 'application/x-www-form-urlencoded', 'Content-Length': 500)
       .post({}) (err, res, body) ->
-        message.send "#{res}"
+        console.log "#{res}"
         if err
+          console.log "#{err}"
           message.send "#{err}"
           return
         else
+          console.log "#{body}"
           message.send "#{body}"
