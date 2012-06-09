@@ -9,7 +9,7 @@ module.exports = (robot) ->
         to: 'lewis.f.chung@gmail.com'
         subject: 'Testing Mailgun API'
         text: 'testing this')
-      .headers('Content-Type': 'application/x-www-form-urlencoded', 'Content-Length': 500)
+      .headers('Content-Type': 'application/x-www-form-urlencoded', 'Content-Length': 0)
       .post({}) (err, res, body) ->
         console.log "#{res}"
         if err
@@ -19,3 +19,4 @@ module.exports = (robot) ->
         else
           console.log "#{body}"
           message.send "#{body}"
+          return
