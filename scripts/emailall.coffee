@@ -1,7 +1,7 @@
 # My attempt to get Mailgun hooked up with hubot
 
-# Nodemailer = require 'nodemailer'
-mail = require 'mailer'
+Nodemailer = require 'nodemailer'
+# mail = require 'mailer'
 
 module.exports = (robot) ->
   robot.respond /send all (.*)$/i, (message) ->
