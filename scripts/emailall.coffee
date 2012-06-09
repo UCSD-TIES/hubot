@@ -10,5 +10,6 @@ module.exports = (robot) ->
          ['lewis.f.chung@gmail.com'],
          'Behold the wonderous power of email!',
          {},
-         function(err) { err && console.log(err) });
-    message.send("Gotcha!")
+         do (err) ->
+          err && console.log(err)
+          message.send("Gotcha!")
