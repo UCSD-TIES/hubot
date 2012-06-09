@@ -1,3 +1,4 @@
+# My attempt to get Mailgun hooked up with hubot
 
 module.exports = (robot) ->
   robot.respond /send all (.*)$/i, (message) ->
@@ -7,7 +8,7 @@ module.exports = (robot) ->
         to: 'lewis.f.chung@gmail.com'
         subject: 'Testing Mailgun API'
         text: 'testing this')
-      .headers('Content-Type': 'application/x-www-form-urlencoded', 'Content-Length': 0)
+      .headers('Content-Type': 'application/x-www-form-urlencoded', 'Content-Length': 500)
       .post({}) (err, res, body) ->
         if err
           message.send "#{err}"
