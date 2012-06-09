@@ -14,13 +14,10 @@ module.exports = (robot) ->
         html: "<b>#{message.message.user}:</b> #{message.match[1]}",
       )
       .header('Content-Length', 0)
-      .post() (err, res, body) ->
+      .post({}) (err, res, body) ->
         console.log err
         console.log res
         console.log body
-        json = JSON.parse(body)
-        json = JSON.parse(body)
-        json = JSON.parse(body)
         if json.success == true
           message.send("Message sent.")
         else
