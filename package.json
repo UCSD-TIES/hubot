@@ -1,6 +1,10 @@
 {
   "name":        "hosted-hubot",
   "version":     "2.2.1",
+  "engines": {
+    "node": "0.6.18",
+    "npm": "1.1.24"
+  }
   "author":      "GitHub Inc.",
   "keywords":    "github hubot campfire bot",
   "description": "A simple helpful Robot for your Company",
