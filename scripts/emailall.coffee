@@ -41,7 +41,7 @@ module.exports = (robot) ->
     options.to = 'team@lewis.mailgun.org'
     options.from = 'InHaiti Hipchat &lt;lewis@lewis.mailgun.org&gt;'
     options.subject = "#{message.message.user.name} sent everyone a notice message."
-    options.html = "<p>Hi #{message.message.user.name.split(" ")[0]},</p> <p>#{message.message.user.name} just sent everyone this notice message.</p><p><b>#{message.message.user.name}:</b> #{message.match[1]}</p>"
+    options.html = "<p>Hi #{message.message.user.name.split(" ")[0]},</p> <p>#{message.message.user.name} just sent everyone this notice message:</p><p><b>#{message.message.user.name.split(" ")[0] + message.message.user.name.split(" ")[1][0]}:</b> #{message.match[1]}</p>"
     mal.send options, (err, result) ->
       if (err)
         console.log err
