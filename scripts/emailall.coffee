@@ -38,15 +38,16 @@ module.exports = (robot) ->
      password        : "inhaitibot"
    }
    if (options.host)
-     options.to = ['lewis.f.chung@gmail.com', 'wes.vetter@gmail.com']
+     options.to = 'lewis.f.chung@gmail.com'
      options.from = 'lewis@lewis.mailgun.org'
      options.subject = "#{message.message.user.name} sent everyone a message"
      options.html = "<p>Hello, #{message.message.user.name} just sent everyone this notice message.</p><p><b>#{message.message.user.name}:</b> #{message.match[1]}</p>"
      mail.send options, (err, result) ->
-       console.log err
        if (err)
+         console.log err
          message.reply "Error :("
        else
+         console.log result
          message.reply "Done!"
 
 
