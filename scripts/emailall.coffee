@@ -34,12 +34,12 @@ module.exports = (robot) ->
      ssl             : false
      domain          : "lewis.mailgun.org"
      authentication  : "login"
-     username        : "hubot@lewis.mailgun.org"
-     password        : "inhaitibot"
+     username        : "hubot@wehaveweneed.mailgun.org"
+     password        : "inhaitihubot"
    }
    if (options.host)
      options.to = 'team@lewis.mailgun.org'
-     options.from = 'Hipchat Hubot <lewis@lewis.mailgun.org>'
+     options.from = 'Hipchat Hubot <hubot@wehaveweneed.mailgun.org>'
      options.subject = "#{message.message.user.name} sent everyone a notice message."
      options.html = "<p>Hi #{message.message.user.name.split(" ")[0]},</p> <p><a href='https://www.hipchat.com/members/#{message.message.user.id}'>#{message.message.user.name}</a> just sent everyone this notice message.</p><p><b>#{message.message.user.name.split(" ")[0]} #{message.message.user.name.split(" ")[1][0]}:</b> #{message.match[1]}</p>"
      mail.send options, (err, result) ->
