@@ -38,8 +38,7 @@ module.exports = (robot) ->
      password        : "inhaitibot"
    }
    if (options.host)
-     #options.to = 'team@lewis.mailgun.org'
-     options.to = 'lewis.f.chung@gmail.com'
+     options.to = 'team@lewis.mailgun.org'
      options.from = 'Hipchat Hubot <lewis@lewis.mailgun.org>'
      options.subject = "#{message.message.user.name} sent everyone a notice message."
      options.html = "<p>Hi #{message.message.user.name.split(" ")[0]},</p> <p>#{message.message.user.name} just sent everyone this notice message.</p><p><b>#{message.message.user.name.split(" ")[0]} #{message.message.user.name.split(" ")[1][0]}:</b> #{message.match[1]}</p>"
