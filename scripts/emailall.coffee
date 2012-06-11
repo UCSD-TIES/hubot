@@ -38,7 +38,7 @@ module.exports = (robot) ->
      password        : "inhaitibot"
    }
    if (options.host)
-     options.to = 'lewis.f.chung@gmail.com'
+     options.to = ['lewis.f.chung@gmail.com', 'wes.vetter@gmail.com']
      options.from = 'lewis@lewis.mailgun.org'
      options.subject = "#{message.message.user.name} sent everyone a message"
      options.html = "<p>Hello, #{message.message.user.name} just sent everyone this notice message.</p><p><b>#{message.message.user.name}:</b> #{message.match[1]}</p>"
