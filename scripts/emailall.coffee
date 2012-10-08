@@ -26,7 +26,7 @@ module.exports = (robot) ->
 
     console.log('Sending Mail')
 
-    transport.sendMail(@mess, (error) ->
+    @transport.sendMail(@mess, (error) ->
       if error
         console.log 'Error occured'
         console.log error.message
