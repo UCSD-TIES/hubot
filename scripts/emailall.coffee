@@ -5,17 +5,17 @@ nodemailer = require("nodemailer")
 module.exports = (robot) ->
 
   robot.respond /send all (.*)$/i, (message) ->
-    @transport = nodemailer.createTransport("SMTP", {
-      host: process.env.MAILGUN_SMTP_SERVER
-      port: process.env.MAILGUN_SMTP_PORT
+    transport = nodemailer.createTransport("SMTP", {
+      host: process.env.MAILGUN_SMTP_SERVER or "smtp.mailgun.org"
+      port: process.env.MAILGUN_SMTP_PORT or 587
       secureConnection: false
       auth: {
-          user:     process.env.MAILGUN_SMTP_LOGIN
-          password: process.env.MAILGUN_SMTP_PASSWORD
+          user:     process.env.MAILGUN_SMTP_LOGIN or "hubot@wehaveweneed.mailgun.org"
+          password: process.env.MAILGUN_SMTP_PASSWORD or "inhaiti2012"
       }
     })
 
-    @mess = {
+    mess = {
       from: 'Hipchat Hubot <hubot@wehaveweneed.mailgun.org>'
       to: 'team@lewis.mailgun.org'
       subject: "#{message.message.user.name} sent everyone a notice message."
@@ -25,7 +25,7 @@ module.exports = (robot) ->
 
     console.log('Sending Mail')
 
-    @transport.sendMail(@mess, (error) ->
+    transport.sendMail(mess, (error) ->
       if error
         console.log 'Error occured'
         console.log error.message
