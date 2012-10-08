@@ -9,10 +9,12 @@ module.exports = (robot) ->
       host: process.env.MAILGUN_SMTP_SERVER or "smtp.mailgun.org"
       port: process.env.MAILGUN_SMTP_PORT or 587
       secureConnection: false
+      name: 'wehaveweneed.mailgun.org'
       auth: {
           user:     process.env.MAILGUN_SMTP_LOGIN or "hubot@wehaveweneed.mailgun.org"
           password: process.env.MAILGUN_SMTP_PASSWORD or "inhaiti2012"
       }
+      debug: true
     })
 
     message = {
