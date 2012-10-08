@@ -17,6 +17,11 @@ module.exports = (robot) ->
       debug: true
     })
 
+    console.log process.env.MAILGUN_SMTP_SERVER
+    console.log process.env.MAILGUN_SMTP_PORT
+    console.log process.env.MAILGUN_SMTP_LOGIN
+    console.log process.env.MAILGUN_SMTP_PASSWORD
+
     message = {
       from: 'Hipchat Hubot <hubot@wehaveweneed.mailgun.org>'
       to: 'team@lewis.mailgun.org'
