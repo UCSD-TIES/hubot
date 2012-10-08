@@ -6,12 +6,12 @@ module.exports = (robot) ->
 
   robot.respond /send all (.*)$/i, (message) ->
     @transport = nodemailer.createTransport("SMTP", {
-      host: "smtp.mailgun.org"
-      port: 587
+      host: process.env.MAILGUN_SMTP_SERVER
+      port: process.env.MAILGUN_SMTP_PORT
       secureConnection: false
       auth: {
-          user:     process.env.HUBOT_MAILGUN_USER
-          password: process.env.HUBOT_MAILGUN_PASSWORD
+          user:     process.env.MAILGUN_SMTP_LOGIN
+          password: process.env.MAILGUN_SMTP_PASSWORD
       }
     })
 
