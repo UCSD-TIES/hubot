@@ -53,5 +53,6 @@ module.exports = (robot) ->
               -> (err)
                 message.send 'Error occured: ' + err
                 return
+          )
 
     message.send 'Message sent successfully!'
