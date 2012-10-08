@@ -43,7 +43,7 @@ module.exports = (robot) ->
   
   robot.respond /send all (.*)/i, (message) ->
     
-    sendRaw('hubot@wehaveweneed.mailgun.org',
+    mg.sendRaw('hubot@wehaveweneed.mailgun.org',
             ['team@lewis.mailgun.org'],
             'From: Hipchat Hubot <hubot@wehaveweneed.mailgun.org>' +
               '\nTo: ' + 'team@lewis.mailgun.org' +
