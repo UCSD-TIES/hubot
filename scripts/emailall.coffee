@@ -14,6 +14,7 @@ module.exports = (robot) ->
     username        : "hubot@wehaveweneed.mailgun.org"
     password        : "inhaitihubot"
   }
+
   if (options.host)
     options.to = 'team@lewis.mailgun.org'
     options.from = 'Hipchat Hubot <hubot@wehaveweneed.mailgun.org>'
