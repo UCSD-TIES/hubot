@@ -9,10 +9,9 @@ module.exports = (robot) ->
       host: "smtp.mailgun.org"
       port: 587
       secureConnection: false
-      domain: "lewis.mailgun.org"
       auth: {
-          user: "hubot@wehaveweneed.mailgun.org"
-          password: "inhaitihubot"
+          user:     process.env.HUBOT_MAILGUN_USER
+          password: process.env.HUBOT_MAILGUN_PASSWORD
       }
     })
 
