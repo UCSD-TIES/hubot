@@ -29,7 +29,7 @@ module.exports = (robot) ->
       if error
         console.log 'Error occured'
         console.log error.message
-        message.send 'Error occured.'
+        message.send 'Error occured: ' + error.message
         return
       console.log 'Message sent successfully!'
       message.send 'Message sent successfully!'
