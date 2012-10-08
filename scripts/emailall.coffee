@@ -17,8 +17,8 @@ module.exports = (robot) ->
     })
 
     message = {
-      from: 'Hipchat Hubot <hubot@wehaveweneed.mailgun.org>'
-      to: 'team@lewis.mailgun.org'
+      from: 'Hipchat Hubot <admin@wehave-weneed.org>'
+      to: 'lewis.f.chung@gmail.com'
       subject: "#{msg.message.user.name} sent everyone a notice message."
       html: "<p>Hi #{msg.message.user.name.split(" ")[0]},</p> <p><a href='https://www.hipchat.com/members/#{msg.message.user.id}'>#{msg.message.user.name}</a> just sent everyone this notice message.</p><p><b>#{msg.message.user.name.split(" ")[0]} #{msg.message.user.name.split(" ")[1][0]}:</b> #{msg.match[1]}</p>"
       text: "Hi #{msg.message.user.name.split(" ")[0]}, #{msg.message.user.name} just sent everyone this notice message. #{msg.message.user.name.split(" ")[0]} #{msg.message.user.name.split(" ")[1][0]}: #{msg.match[1]}"
