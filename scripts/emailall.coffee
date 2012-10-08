@@ -7,7 +7,7 @@ module.exports = (robot) ->
   robot.respond /send all (.*)$/i, (msg) ->
     transport = nodemailer.createTransport("SMTP", {
       host: 'smtp.sendgrid.net'
-      port: process.env.MAILGUN_SMTP_PORT or 587
+      port: 587
       secureConnection: false
       auth: {
           user:     process.env.SENDGRID_USERNAME
