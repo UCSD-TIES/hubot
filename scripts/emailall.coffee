@@ -49,10 +49,10 @@ module.exports = (robot) ->
             'From: Hipchat Hubot <hubot@wehaveweneed.mailgun.org>' +
               '\nTo: ' + 'team@lewis.mailgun.org' +
               '\nContent-Type: text/html; charset=utf-8' +
-              '\nSubject: ' + '#{message.message.user.name} sent everyone a message.' +
-              '\n\n<p>Hi #{message.message.user.name.split(" ")[0]},</p> <p><a href="https://www.hipchat.com/members/#{message.message.user.id}">#{message.message.user.name}</a> just sent everyone this notice message.</p><p><b>#{message.message.user.name.split(" ")[0]} #{message.message.user.name.split(" ")[1][0]}:</b> #{message.match[1]}</p>',
+              '\nSubject: ' + "#{message.message.user.name} sent everyone a message." +
+              "\n\n<p>Hi #{message.message.user.name.split(" ")[0]},</p> <p><a href="https://www.hipchat.com/members/#{message.message.user.id}">#{message.message.user.name}</a> just sent everyone this notice message.</p><p><b>#{message.message.user.name.split(" ")[0]} #{message.message.user.name.split(" ")[1][0]}:</b> #{message.match[1]}</p>",
               'wehaveweneed.mailgun.org',
               (err) ->
                 message.send 'Error occured: ' + err
-                return
+                return false
           )
