@@ -20,7 +20,8 @@
     "hubot-scripts": ">= 2.1.0",
     "optparse": "1.0.3",
     "nodemailer": ">= 0.3.28",
-    "redis": ">= 0.8.1"
+    "redis": ">= 0.8.1",
+    "wobot": '0.8.0'
   },
 
   "engines": {
