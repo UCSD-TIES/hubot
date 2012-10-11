@@ -20,7 +20,6 @@
     "hubot-scripts": ">= 2.1.0",
     "optparse": "1.0.3",
     "nodemailer": ">= 0.3.28",
-    "mailgun": ">= 0.4.2",
     "redis": ">= 0.8.1"
   },
 
