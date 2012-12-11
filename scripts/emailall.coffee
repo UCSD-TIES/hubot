@@ -1,4 +1,8 @@
-# My attempt to get Mailgun hooked up with hubot
+# Description:
+#   My attempt to get Mailgun hooked up with hubot
+#
+# Commands:
+#   hubot send all <message> - Sends `message` to everyone on the team roster.
 
 nodemailer = require("nodemailer")
 
