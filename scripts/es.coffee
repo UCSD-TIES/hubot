@@ -9,4 +9,7 @@ module.exports = (robot) ->
     msg.http('http://ec2-184-169-193-129.us-west-1.compute.amazonaws.com:9200/')
       .get() (err, res, body) ->
         json = JSON.parse(body)
-        console.log json
+        if json? and json.status is 200
+           msg.send "ElasticSearch is online! (fuckyeah) http://ec2-184-169-193-129.us-west-1.compute.amazonaws.com:9200/"
+        else
+           msg.send "Uh oh, doesn't look like ElasticSearch is responding. (okay) http://ec2-184-169-193-129.us-west-1.compute.amazonaws.com:9200/"
