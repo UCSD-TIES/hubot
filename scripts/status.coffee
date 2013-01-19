@@ -11,37 +11,37 @@
 
 module.exports = (robot) ->
   robot.respond /status/i, (msg) ->
-    ConnectServ 
+    msg ConnectServ
 
 ConnectServ = require("ssh2")
 c = new ConnectServ()
 c.on "connect", ->  
-  console.log "Connection :: connect"
+  #console.log "Connection :: connect"
 
 c.on "ready", ->
-  console.log "Connection :: ready"
+  #console.log "Connection :: ready"
   c.exec "uptime", (err, stream) ->
     throw err if err
     stream.on "data", (data, extended) ->
       console.log ((if extended is "stderr" then "STDERR: " else "STDOUT: ")) + data
 
-    stream.on "end", ->
-      console.log "Stream :: EOF"
+    #    stream.on "end", ->
+      #console.log "Stream :: EOF"
 
-    stream.on "close", ->
-      console.log "Stream :: close"
+      #stream.on "close", ->
+      #console.log "Stream :: close"
 
-    stream.on "exit", (code, signal) ->
-      console.log "Stream :: exit :: code " + code + ", signal : " + signal
+      stream.on "exit", (code, signal) ->
+      #console.log "Stream :: exit :: code " + code + ", signal : " + signal
       c.end()
 
 c.on "error", (err) ->
   console.log "Connection :: error :: " + err
 
-c.on "end", ->
+  #c.on "end", ->
   console.log "Connection :: end"
 
-c.on "close", (had_error) ->
+  #c.on "close", (had_error) ->
   console.log "Connection :: close"
 
 c.connect
