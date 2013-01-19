@@ -22,6 +22,7 @@ module.exports = (robot) ->
        throw err if err
        stream.on "data", (data, extended) ->
          console.log ((if extended is "stderr" then "STDERR: " else "STDOUT: ")) + data
+         msg.send data
          #    stream.on "end", ->
           #console.log "Stream :: EOF"
 
@@ -46,4 +47,3 @@ module.exports = (robot) ->
       port: 22
       username: "test1"
       password: "nodejs"
-    msg.send console.log
