@@ -11,7 +11,8 @@
 
 module.exports = (robot) ->
   robot.respond /status/i, (msg) ->
-    msg.send c
+    ConnectServ
+    msg.send a
 
 ConnectServ = require("ssh2")
 c = new ConnectServ()
@@ -24,7 +25,7 @@ c.on "ready", ->
     throw err if err
     stream.on "data", (data, extended) ->
       console.log ((if extended is "stderr" then "STDERR: " else "STDOUT: ")) + data
-
+      a = data
     #    stream.on "end", ->
       #console.log "Stream :: EOF"
 
