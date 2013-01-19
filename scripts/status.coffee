@@ -46,4 +46,4 @@ module.exports = (robot) ->
       port: 22
       username: "test1"
       password: "nodejs"
-  msg.send console.log
+  msg.send "MOOCOW?"
