@@ -21,8 +21,9 @@ module.exports = (robot) ->
       c.exec "uptime", (err, stream) ->
        throw err if err
        stream.on "data", (data, extended) ->
-          console.log ((if extended is "stderr" then "STDERR: " else "STDOUT: ")) + data
-        #    stream.on "end", ->
+         console.log ((if extended is "stderr" then "STDERR: " else "STDOUT: ")) + data
+         msg.send data 
+         #    stream.on "end", ->
           #console.log "Stream :: EOF"
 
           #stream.on "close", ->
@@ -46,4 +47,3 @@ module.exports = (robot) ->
       port: 22
       username: "test1"
       password: "nodejs"
-  msg.send "MOOCOW?"
