@@ -40,5 +40,5 @@ module.exports = (robot) ->
                   else
                     object2 = JSON.parse(body)
                     msg.send object2.title, object2.img, object2.alt
-            else  
-              msg.send object.title, object.img, object.alt
+              else  
+                msg.send object.title, object.img, object.alt
