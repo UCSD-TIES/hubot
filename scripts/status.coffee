@@ -11,7 +11,7 @@
 
 module.exports = (robot) ->
   robot.respond /status/i, (msg) ->
-    msg.send ConnectServ
+    msg.send c
 
 ConnectServ = require("ssh2")
 c = new ConnectServ()
