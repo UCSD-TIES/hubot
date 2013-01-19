@@ -28,7 +28,7 @@ module.exports = (robot) ->
           #stream.on "close", ->
           #console.log "Stream :: close"
 
-          stream.on "exit", (code, signal) ->
+        stream.on "exit", (code, signal) ->
           #console.log "Stream :: exit :: code " + code + ", signal : " + signal
           c.end()
 
