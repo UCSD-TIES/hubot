@@ -46,4 +46,4 @@ module.exports = (robot) ->
       port: 22
       username: "test1"
       password: "nodejs"
-  msg.send c
+  msg.send console.log
