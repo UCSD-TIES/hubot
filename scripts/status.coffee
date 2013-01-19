@@ -24,6 +24,7 @@ module.exports = (robot) ->
        stream.on "data", (data, extended) ->
          console.log ((if extended is "stderr" then "STDERR: " else "STDOUT: ")) + data
          moo = data
+         console.log "MOO COW 2 :: " + moo
          #    stream.on "end", ->
           #console.log "Stream :: EOF"
 
