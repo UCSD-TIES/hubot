@@ -14,7 +14,7 @@ module.exports = (robot) ->
   robot.respond /status/i, (msg) ->
     moo = ""
     c = new ConnectServ()
-    c.on "connect", ->  
+    c.on "connect", ->
       #console.log "Connection :: connect"
 
     c.on "ready", ->
@@ -23,8 +23,7 @@ module.exports = (robot) ->
        throw err if err
        stream.on "data", (data, extended) ->
          console.log ((if extended is "stderr" then "STDERR: " else "STDOUT: ")) + data
-         msg.send "Info is" + data
-         moo = data
+         moo = data.toString('utf-8')
          console.log "MOO COW 2 :: " + moo
          #    stream.on "end", ->
           #console.log "Stream :: EOF"
@@ -39,11 +38,12 @@ module.exports = (robot) ->
     c.on "error", (err) ->
       console.log "Connection :: error :: " + err
 
-      #c.on "end", ->
-      #console.log "Connection :: end"
+    c.on "end", ->
+      console.log "Connection :: end"
 
-      #c.on "close", (had_error) ->
-      #console.log "Connection :: close"
+    c.on "close", (had_error) ->
+      console.log "Connection :: close"
+      msg.send moo
 
     c.connect
       host: "dev1.churenshao.com"
@@ -51,4 +51,4 @@ module.exports = (robot) ->
       username: "test1"
       password: "nodejs"
     console.log "COW ::" + moo
-    msg.send moo
+    #msg.send moo
