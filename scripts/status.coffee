@@ -38,11 +38,12 @@ module.exports = (robot) ->
     c.on "error", (err) ->
       console.log "Connection :: error :: " + err
 
-      #c.on "end", ->
-      #console.log "Connection :: end"
+    c.on "end", ->
+      console.log "Connection :: end"
 
-      #c.on "close", (had_error) ->
-      #console.log "Connection :: close"
+    c.on "close", (had_error) ->
+      console.log "Connection :: close"
+      msg.send moo
 
     c.connect
       host: "dev1.churenshao.com"
@@ -50,4 +51,4 @@ module.exports = (robot) ->
       username: "test1"
       password: "nodejs"
     console.log "COW ::" + moo
-    msg.send moo
+    #msg.send moo
