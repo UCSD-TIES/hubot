@@ -14,7 +14,7 @@ module.exports = (robot) ->
   robot.respond /status/i, (msg) ->
     moo = ""
     c = new ConnectServ()
-    c.on "connect", ->  
+    c.on "connect", ->
       #console.log "Connection :: connect"
 
     c.on "ready", ->
@@ -23,7 +23,7 @@ module.exports = (robot) ->
        throw err if err
        stream.on "data", (data, extended) ->
          console.log ((if extended is "stderr" then "STDERR: " else "STDOUT: ")) + data
-         moo = data
+         moo = data.toString('utf-8')
          console.log "MOO COW 2 :: " + moo
          #    stream.on "end", ->
           #console.log "Stream :: EOF"
