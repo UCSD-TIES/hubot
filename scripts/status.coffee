@@ -23,6 +23,7 @@ module.exports = (robot) ->
        throw err if err
        stream.on "data", (data, extended) ->
          console.log ((if extended is "stderr" then "STDERR: " else "STDOUT: ")) + data
+         msg.send "Info is" + data
          moo = data
          console.log "MOO COW 2 :: " + moo
          #    stream.on "end", ->
