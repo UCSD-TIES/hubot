@@ -13,29 +13,54 @@ ConnectServ = require("ssh2")
 module.exports = (robot) ->
   robot.respond /status\s?(.*)?/i, (msg) ->
     if msg.match[1] == 'stagedb'
-      envhost = process.env['STAGING_DB_SSH_HOST']
+      envhost = process.env['STAGING_SSH_HOST']
       envport = process.env['STAGING_DB_SSH_PORT']
       envuser = process.env['STAGING_DB_SSH_USER']
-      envprivatekey = process.env['STAGING_PRIVATEKEY']
+      envprivatekey = process.env['PRIVATEKEY']
     
-    if msg.match[1] == 'stagingpy'
-      envhost = process.env['STAGING_PY_SSH_HOST']
+    if msg.match[1] == 'stagepy'
+      envhost = process.env['STAGING_SSH_HOST']
       envport = process.env['STAGING_PY_SSH_PORT']
       envuser = process.env['STAGING_PY_SSH_USER']
-      envprivatekey = process.env['STAGING_PRIVATEKEY']
+      envprivatekey = process.env['PRIVATEKEY']
     
-     if msg.match[1] == 'stagingq'
-      envhost = process.env['STAGING_Q_SSH_HOST']
+     if msg.match[1] == 'stageq'
+      envhost = process.env['STAGING_SSH_HOST']
       envport = process.env['STAGING_Q_SSH_PORT']
       envuser = process.env['STAGING_Q_SSH_USER']
-      envprivatekey = process.env['STAGING_PRIVATEKEY']
+      envprivatekey = process.env['PRIVATEKEY']
 
-     if msg.match[1] == 'stagingworkers'
-      envhost = process.env['STAGING_WORKERS_SSH_HOST']
+     if msg.match[1] == 'stageworkers'
+      envhost = process.env['STAGING_SSH_HOST']
       envport = process.env['STAGING_WORKERS_SSH_PORT']
       envuser = process.env['STAGING_WORKERS_SSH_USER']
-      envprivatekey = process.env['STAGING_PRIVATEKEY']
+      envprivatekey = process.env['PRIVATEKEY']
     
+    if msg.match[1] == 'proddb'
+      envhost = process.env['PROD_SSH_HOST']
+      envport = process.env['PROD_DB_SSH_PORT']
+      envuser = process.env['PROD_DB_SSH_USER']
+      envprivatekey = process.env['PRIVATEKEY']
+    
+     if msg.match[1] == 'prodpy'
+      envhost = process.env['PROD_SSH_HOST']
+      envport = process.env['PROD_PY_SSH_PORT']
+      envuser = process.env['PROD_PY_SSH_USER']
+      envprivatekey = process.env['PRIVATEKEY']
+    
+     if msg.match[1] == 'prodq'
+      envhost = process.env['PROD_SSH_HOST']
+      envport = process.env['PROD_Q_SSH_PORT']
+      envuser = process.env['PROD_Q_SSH_USER']
+      envprivatekey = process.env['PRIVATEKEY']
+    
+     if msg.match[1] == 'prodworkers'
+      envhost = process.env['PROD_SSH_HOST']
+      envport = process.env['PROD_WORKERS_SSH_PORT']
+      envuser = process.env['PROD_WORKERS_SSH_USER']
+      envprivatekey = process.env['PRIVATEKEY']
+    
+
     
     moo = ""
     c = new ConnectServ()
