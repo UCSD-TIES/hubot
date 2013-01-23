@@ -11,28 +11,44 @@
 ConnectServ = require("ssh2")
 
 module.exports = (robot) ->
-  robot.respond /status/i, (msg) ->
+  robot.respond /status\s?(.*)?/i, (msg) ->
+    if msg.match[1] == 'stagedb'
+      envhost = process.env['STAGING_DB_SSH_HOST']
+      envport = process.env['STAGING_DB_SSH_PORT']
+      envuser = process.env['STAGING_DB_SSH_USER']
+      envprivatekey = process.env['STAGING_PRIVATEKEY']
+    
+    if msg.match[1] == 'stagingpy'
+      envhost = process.env['STAGING_PY_SSH_HOST']
+      envport = process.env['STAGING_PY_SSH_PORT']
+      envuser = process.env['STAGING_PY_SSH_USER']
+      envprivatekey = process.env['STAGING_PRIVATEKEY']
+    
+     if msg.match[1] == 'stagingq'
+      envhost = process.env['STAGING_Q_SSH_HOST']
+      envport = process.env['STAGING_Q_SSH_PORT']
+      envuser = process.env['STAGING_Q_SSH_USER']
+      envprivatekey = process.env['STAGING_PRIVATEKEY']
+
+     if msg.match[1] == 'stagingworkers'
+      envhost = process.env['STAGING_WORKERS_SSH_HOST']
+      envport = process.env['STAGING_WORKERS_SSH_PORT']
+      envuser = process.env['STAGING_WORKERS_SSH_USER']
+      envprivatekey = process.env['STAGING_PRIVATEKEY']
+    
+    
     moo = ""
     c = new ConnectServ()
     c.on "connect", ->
-      #console.log "Connection :: connect"
 
     c.on "ready", ->
-      #console.log "Connection :: ready"
       c.exec "uptime", (err, stream) ->
        throw err if err
        stream.on "data", (data, extended) ->
          console.log ((if extended is "stderr" then "STDERR: " else "STDOUT: ")) + data
          moo = data.toString('utf-8')
-         console.log "MOO COW 2 :: " + moo
-         #    stream.on "end", ->
-          #console.log "Stream :: EOF"
-
-          #stream.on "close", ->
-          #console.log "Stream :: close"
 
         stream.on "exit", (code, signal) ->
-          #console.log "Stream :: exit :: code " + code + ", signal : " + signal
           c.end()
 
     c.on "error", (err) ->
@@ -46,9 +62,8 @@ module.exports = (robot) ->
       msg.send moo
 
     c.connect
-      host: "dev1.churenshao.com"
-      port: 22
-      username: "test1"
-      password: "nodejs"
-    console.log "COW ::" + moo
+      host: envhost
+      port: envport
+      username: envuser
+      privateKey: envprivatekey
     #msg.send moo
