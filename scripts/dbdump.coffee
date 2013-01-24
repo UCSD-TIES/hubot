@@ -1,5 +1,5 @@
 # Description: 
-#   An additional functionality that lets hubot communicate with servers and be able to grab system data from those servers
+#   A script that allows hubot to make a dump of the database and send it to a public access folder.
 #
 #   Dependencies:
 #   SSH2 (https://github.com/mscdex/ssh2)
@@ -7,7 +7,8 @@
 #   Configuration:
 #
 #   Commands:
-#   hubot status - replies with uptime of staging (for now)
+#   hubot dbdump stage - creates a dump of the db from the staging database
+#   hubot dbdump prod - creates a dump of the db from the production database
 ConnectServ = require("ssh2")
 
 module.exports = (robot) ->
