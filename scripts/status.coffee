@@ -75,7 +75,7 @@ module.exports = (robot) ->
     c.on "connect", ->
 
     c.on "ready", ->
-      c.exec "top -l 1 -n 0", (err, stream) ->
+      c.exec "top -n 0 -b", (err, stream) ->
        throw err if err
        stream.on "data", (data, extended) ->
          console.log ((if extended is "stderr" then "STDERR: " else "STDOUT: ")) + data
