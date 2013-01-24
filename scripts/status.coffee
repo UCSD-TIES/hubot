@@ -7,7 +7,15 @@
 #   Configuration:
 #
 #   Commands:
-#   hubot status - replies with uptime of staging (for now)
+#   hubot status stagedb - Status of staging DB
+#   hubot status stagepy - Status of staging Python
+#   hubot status stageq - Status of staging Queue
+#   hubot status stageworkers - Status of staging workers
+#   hubot status proddb - Status of production DB
+#   hubot status prodpy - Status of production Python
+#   hubot status prodq - Status of production Queue
+#   hubot status prodworkers - Status of production workers
+
 ConnectServ = require("ssh2")
 
 module.exports = (robot) ->
@@ -67,7 +75,7 @@ module.exports = (robot) ->
     c.on "connect", ->
 
     c.on "ready", ->
-      c.exec "uptime", (err, stream) ->
+      c.exec "top -n 1 -b", (err, stream) ->
        throw err if err
        stream.on "data", (data, extended) ->
          console.log ((if extended is "stderr" then "STDERR: " else "STDOUT: ")) + data
