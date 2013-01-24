@@ -31,7 +31,7 @@ module.exports = (robot) ->
     c.on "connect", ->
 
     c.on "ready", ->
-      c.exec "pg_dump whwn | gzip > whwn.gz; scp whwn.gz robot@dev1.churenshao.com:/var/www/html/", (err, stream) ->
+      c.exec "pg_dump whwn | gzip > whwn.gz; scp whwn.gz robot@dev1.churenshao.com:~/public_html/whwn.gz", (err, stream) ->
        throw err if err
        stream.on "data", (data, extended) ->
          console.log ((if extended is "stderr" then "STDERR: " else "STDOUT: ")) + data
@@ -55,4 +55,4 @@ module.exports = (robot) ->
       port: envport
       username: envuser
       privateKey: envprivatekey
-    msg.send "Download at dev1.churenshao.com/whwn.gz"
+    msg.send "Download at dev1.churenshao.com/~robot/whwn.gz"
