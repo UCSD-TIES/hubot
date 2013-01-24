@@ -49,7 +49,7 @@ module.exports = (robot) ->
     c.on "close", (had_error) ->
       console.log "Connection :: close"
       msg.send moo
-      msg.send "Download at dev1.churenshao.com/~robot/whwn.gz"
+      msg.send "DB Dump Complete, download at dev1.churenshao.com/~robot/whwn.gz"
 
     c.connect
       host: envhost
